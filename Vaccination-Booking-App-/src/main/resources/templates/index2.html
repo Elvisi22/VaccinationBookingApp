@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <title>CVBAPP</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../static/style.css">
+  <div th:replace="fragments/header :: header"></div>
+  
+</head>
+<body>
+  <div class="jumbotron">
+
+   <article th:each="appointment :${appointment}">
+     <h3 class="title text text-center" th:text="${appointment.title}">appointment Title </h3>
+     <p class="description" th:utext="${appointment.description}"> Description </p>
+     <p class=" username text text-center" th:text="${appointment.user.username}"></p>
+     <br>
+   </article>
+ </div>
+</body>
+<footer id="footer">
+<div th:replace="fragments/footer :: footer"></div>
+</footer>
+</html>

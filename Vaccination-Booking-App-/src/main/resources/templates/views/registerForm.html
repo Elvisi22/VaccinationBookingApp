@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <div th:replace="fragments/header :: header"></div>
+    
+</head>
+<body>
+    <div class="container login">
+        <div class="alert alert-info" th:if="${exist}">
+            <p class="text text-center">
+                User with this Email and Username already Exist
+            </p>
+        </div>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+
+            <div class="form-group">
+                <label for="email" class="form-control-label">Email</label> <input
+                type="text" class="form-control" th:field="*{email}" id="email" />
+                <div class="text text-danger" th:if="${#fields.hasErrors('email')}"
+                th:errors="*{email}"></div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-control-label">Password</label> <input
+                type="password" class="form-control" th:field="*{password}"
+                id="password" />
+                <div class="text text-danger"
+                th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
+            </div>
+            <div class="form-group">
+                <label for="username" class="form-control-label">Username</label> <input
+                type="text" class="form-control" th:field="*{username}" id="username" />
+                <div class="text text-danger" th:if="${#fields.hasErrors('username')}"
+                th:errors="*{username}"></div>
+
+            </div>
+            <input type="submit" value="Submit" class="btn btn-primary submit-button" />
+
+        </form>
+    </div>
+</body>
+<footer id="footer">
+<div th:replace="fragments/footer :: footer"></div>
+</footer>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <div th:replace="fragments/header :: header"></div>
+</head>
+<body>
+    <div class="container mySpace">
+        <form action="#" th:action="@{/updateAppointment/{id}(id=${appointment.id})}" th:object="${appointment}"  method="post">
+
+            <div class="form-group">
+                <label for="Title" class="form-control-label">Title</label> <input
+                type="text" class="form-control" th:field="*{title}" id="title" />
+                <div class="text text-danger" th:if="${#fields.hasErrors('title')}"
+                th:errors="*{title}"></div>
+            </div>
+            <div class="form-group">
+                <label for="description" class="form-control-label">Description</label>
+                <textarea   class="form-control" th:field="*{description}"
+                id="description" rows="15">  </textarea>
+                <div class="text text-danger"
+                th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+            </div>
+            <div class="form-group">
+                <label for="share" class="form-control-label">Confirm</label>
+                <input type="checkbox" for="share" th:field="*{share}"
+                       id="share"/>
+                <div class="text text-danger"
+                th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+
+            </div>
+
+          <input type="submit" value="Submit" class="btn btn-primary submit-button" />
+      </form>
+  </div>
+  
+</body>
+<footer id="footer">
+<div th:replace="fragments/footer :: footer"></div>
+</footer>
+</html>
